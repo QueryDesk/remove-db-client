@@ -1,0 +1,24 @@
+name: Remove Database Client
+description: Automate setting up a database client using querydesk.com so your team has instant access for debugging and testing.
+
+branding: 
+  icon: database
+  color: blue
+  
+inputs:
+  api-key:
+    description: API key from settings on https://app.querydesk.com
+    required: true
+  id:
+    description: The id that was used to create the database connection.
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Remove Database Client
+      shell: bash
+      run: |
+        curl -X DELETE https://api.querydesk.com/v1/databases/${{ inputs.id }} \
+          -H "content-type: application/json" \
+          -H "x-api-key: ${{ inputs.api-key }}"
