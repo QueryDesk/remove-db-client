@@ -21,4 +21,5 @@ runs:
       run: |
         curl -X DELETE https://api.querydesk.com/v1/databases/${{ inputs.id }} \
           -H "content-type: application/json" \
-          -H "x-api-key: ${{ inputs.api-key }}"
+          -H "x-api-key: ${{ inputs.api-key }}" \
+          --fail
