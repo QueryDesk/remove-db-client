@@ -36,3 +36,5 @@ jobs:
     ```
 
 -   `id`: (Required) The id that was used to create the database connection.
+
+-   `host`: (Optional) The host to make the api call to, defaults to api.querydesk.com.

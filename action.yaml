@@ -12,6 +12,9 @@ inputs:
   id:
     description: The id that was used to create the database connection.
     required: true
+  host:
+    description: The host to make the api call to.
+    default: api.querydesk.com
 
 runs:
   using: composite
@@ -19,7 +22,7 @@ runs:
     - name: Remove Database Client
       shell: bash
       run: |
-        curl -X DELETE https://api.querydesk.com/v1/databases/${{ inputs.id }} \
+        curl -X DELETE https://${{ inputs.host }}/v1/databases/${{ inputs.id }} \
           -H "content-type: application/json" \
           -H "x-api-key: ${{ inputs.api-key }}" \
           --fail
